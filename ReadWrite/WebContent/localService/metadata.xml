@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+ <edmx:DataServices m:DataServiceVersion="2.0">
+  <Schema Namespace="Z_SFLIGHT_MSW_SRV_SRV" xml:lang="en" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+   <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+    <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="User Name" sap:creatable="false" sap:filterable="false"/>
+    <Property Name="updated" Type="Edm.DateTime" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Time Stamp" sap:creatable="false" sap:filterable="false"/>
+    <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:filterable="false"/>
+    <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/>
+    <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/>
+    <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/>
+    <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/>
+    <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/>
+    <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+   </EntityType>
+   <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+    <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/>
+    <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/>
+    <Property Name="updated" Type="Edm.DateTime" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Time Stamp"/>
+    <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+    <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/>
+    <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/>
+   </EntityType>
+   <EntityType Name="Sflight" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="Carrid"/>
+     <PropertyRef Name="Connid"/>
+     <PropertyRef Name="Fldate"/>
+    </Key>
+    <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Carrier" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Connection" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Fldate" Type="Edm.DateTime" Nullable="false" sap:label="Flight Date" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="14" sap:unit="Currency" sap:label="Price" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Planetype" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Plane Type" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Seatsmax" Type="Edm.Int32" Nullable="false" sap:label="Max Seats" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Seatsocc" Type="Edm.Int32" Nullable="false" sap:label="Occupied Seats" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="Paymentsum" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="14" sap:unit="Currency" sap:label="PMT" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="SeatsmaxB" Type="Edm.Int32" Nullable="false" sap:label="Max. capacity bus." sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="SeatsoccB" Type="Edm.Int32" Nullable="false" sap:label="Occupied bus." sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="SeatsmaxF" Type="Edm.Int32" Nullable="false" sap:label="Max. capacity 1st" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+    <Property Name="SeatsoccF" Type="Edm.Int32" Nullable="false" sap:label="Occupied 1st" sap:creatable="true" sap:updatable="true" sap:filterable="true" sap:sortable="true"/>
+   </EntityType>
+   <EntityContainer Name="Z_SFLIGHT_MSW_SRV_SRV" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="SubscriptionCollection" EntityType="Z_SFLIGHT_MSW_SRV_SRV.Subscription" sap:content-version="1"/>
+    <EntitySet Name="NotificationCollection" EntityType="Z_SFLIGHT_MSW_SRV_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+    <EntitySet Name="SFLIGHT" EntityType="Z_SFLIGHT_MSW_SRV_SRV.Sflight" sap:deletable="false" sap:searchable="true" sap:updatable="true" sap:content-version="1"/>
+   </EntityContainer>
+   <atom:link rel="self" href="http://genlocalhost.gendomain.com:8082/sap/opu/odata/sap/Z_SFLIGHT_MSW_SRV_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+   <atom:link rel="latest-version" href="http://genlocalhost.gendomain.com:8082/sap/opu/odata/sap/Z_SFLIGHT_MSW_SRV_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+  </Schema>
+ </edmx:DataServices>
+</edmx:Edmx>

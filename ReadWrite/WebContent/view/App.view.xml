@@ -1,11 +1,31 @@
 <mvc:View 
 	controllerName="readwrite.controller.App" 
 	xmlns="sap.m" 
+	xmlns:t="sap.ui.table"
 	xmlns:mvc="sap.ui.core.mvc" 
 	displayBlock="true">
 	<App>
 		<pages>
-			<Page title="{i18n>homePageTitle}"/>
+			<Page title="{i18n>homePageTitle}" class="sapUiContentPadding">
+			<content>
+				<t:Table
+					id="table"
+					rows="{/SFLIGHT}"
+					threshold="15"
+					selectionMode="Single"
+					selectionBehavior="Row"
+					enableBusyIndicator="true"
+					columns="{
+					path: 'meta>/dataServices/schema/[${namespace}===\'Z_SFLIGHT_MSW_SRV_SRV\']/entityType/[${name}===\'Sflight\']/property',
+					factory: '.columnFactory'
+					}"
+					ariaLabelledBy="title">
+					<t:noData>
+						<BusyIndicator class="sapUiMediumMargin"/>
+					</t:noData>
+				</t:Table>
+			</content>	
+			</Page>
 		</pages>
 	</App>
 </mvc:View>

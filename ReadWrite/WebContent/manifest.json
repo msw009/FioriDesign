@@ -34,7 +34,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "gatewayservicetest.i18n.i18n"
+					"bundleName": "readwrite.i18n.i18n"
 				}
 		},
 		"contentDensities": {

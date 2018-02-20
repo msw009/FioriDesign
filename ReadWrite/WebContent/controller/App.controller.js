@@ -76,13 +76,16 @@ sap.ui.define([
 		},
 		
 		onClickRow: function(oEvent) {
+			//Read the index selected, then grab the data at the position of the index. 
+			//Dynamic to the layout of the table
 			var index = oEvent.getParameter('rowIndex');
 		    var oTable = this.getView().byId("table"); 
 		    var context = oTable.getContextByIndex(index);
 		    var path = context.sPath;
 		    var object = oTable.getModel().getProperty(path);
-		    console.log(object);       
+     
 			this.getView().byId('carrid').setValue(object.Carrid);
+			this.getView().byId('connid').setValue(object.Connid);
 		}
 		
 		

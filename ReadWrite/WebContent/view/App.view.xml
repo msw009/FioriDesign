@@ -14,6 +14,7 @@
 					threshold="15"
 					selectionMode="Single"
 					selectionBehavior="Row"
+					rowSelectionChange="onClickRow"
 					enableBusyIndicator="true"
 					columns="{
 					path: 'meta>/dataServices/schema/[${namespace}===\'Z_SFLIGHT_MSW_SRV_SRV\']/entityType/[${name}===\'Sflight\']/property',
@@ -24,6 +25,7 @@
 						<BusyIndicator class="sapUiMediumMargin"/>
 					</t:noData>
 				</t:Table>
+				<Input id="carrid" width="10rem"/>
 			</content>	
 			</Page>
 		</pages>

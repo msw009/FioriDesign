@@ -73,6 +73,16 @@ sap.ui.define([
 				hAlign: sType && sType.indexOf("Decimal") >= 0 ? "End" : "Begin",
 				template: specialTemplate() || new Text({text: {path: sName}})
 			});
+		},
+		
+		onClickRow: function(oEvent) {
+			var index = oEvent.getParameter('rowIndex');
+		    var oTable = this.getView().byId("table"); 
+		    var context = oTable.getContextByIndex(index);
+		    var path = context.sPath;
+		    var object = oTable.getModel().getProperty(path);
+		    console.log(object);       
+			this.getView().byId('carrid').setValue(object.Carrid);
 		}
 		
 		
